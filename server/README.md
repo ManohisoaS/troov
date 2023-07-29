@@ -20,3 +20,9 @@ $ npm run docs
 ```bash
 $ npm run clean-docs
 ```
+
+## run test
+
+```bash
+$ npm run test
+```

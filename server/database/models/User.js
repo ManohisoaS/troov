@@ -7,7 +7,7 @@ const { Schema } = mongoose;
  * User model.
  * @typedef {Object} User
  * @property {string} email.required - The email of the user.
- * @property {string} passwordHash.required - The hashed password of the user.
+ * @property {string} password.required - The hashed password of the user.
  */
 
 const userSchema = new Schema({
@@ -26,7 +26,7 @@ const userSchema = new Schema({
       message: props => `${props.value} is not a valid email address!`
     },
   },
-  passwordHash: {
+  password: {
     type: String,
     required: true,
   },
@@ -36,10 +36,12 @@ const userSchema = new Schema({
 /**
  * Hashes the password before saving it to the database.
  * @function
+ * @param {string} password  - The plain password to crypt.
+ * @returns {string} - The password hashed.
  */
-function hashPassword() {
+function hashPassword(password) {
     const saltRounds = 10;
-    return  bcrypt.hashSync(this.passwordHash, saltRounds);
+    return  bcrypt.hashSync(password, saltRounds);
 }
 
 userSchema.pre("save", function (next) {

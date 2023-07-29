@@ -8,7 +8,7 @@ var mongoose = require("mongoose");
  * @returns {Promise<mongoose.Connection>} A promise that resolves with an object `mongoose.Connection` representing the connection to the MongoDB database.
  * @throws {Error} Throws an error if the connection to the MongoDB database fails.
  */
-async function connect(url, options = {}){
+async function connect(url, options = {}) {
   try {
     // Connects to the MongoDB database using Mongoose.
     mongoose.connection.on("connecting", () => {
@@ -24,7 +24,7 @@ async function connect(url, options = {}){
       console.log("MongoDB: disconnected.");
     });
 
-    return await mongoose.connect(url, ...options);
+    return await mongoose.connect(url, options);
   } catch (error) {
     console.error("Error while trying to MongoDB database:", error);
     throw error;
