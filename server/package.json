@@ -2,19 +2,23 @@
   "name": "server",
   "version": "0.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "node ./bin/www",
-    "docs": "jsdoc -c ./config/jsdoc.conf.json",
+    "docs": "jsdoc -c ./config/jsdoc.conf.json --verbose",
     "clean-docs": "rm -rf ./docs"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^16.3.1",
     "express": "~4.16.1",
+    "mongoose": "^7.4.1",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
     "eslint": "^8.45.0",
     "jsdoc": "^4.0.2"
   }
