@@ -1,9 +1,10 @@
 {
   "source": {
-    "include": ["./bin", "./routes", "./app.js"],
+    "include": ["." ],
     "exclude": ["./config", "./node_modules", "./public"]
   },
   "opts": {
+    "recurse": true,
     "destination": "./docs"
   },
   "plugins": [],
