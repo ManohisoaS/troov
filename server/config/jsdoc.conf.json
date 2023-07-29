@@ -1,0 +1,22 @@
+{
+  "source": {
+    "include": ["./bin", "./routes", "./app.js"],
+    "exclude": ["./config", "./node_modules", "./public"]
+  },
+  "opts": {
+    "destination": "./docs"
+  },
+  "plugins": [],
+  "templates": {
+    "cleverLinks": false,
+    "monospaceLinks": false,
+    "default": {
+      "outputSourceFiles": true
+    },
+    "path": "ink-docstrap",
+    "theme": "cerulean",
+    "navType": "vertical",
+    "linenums": true,
+    "dateFormat": "MMMM Do YYYY, h:mm:ss a"
+  }
+}

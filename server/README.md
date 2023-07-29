@@ -7,5 +7,16 @@ $ npm install
 ## run the app
 
 ```bash
-$ DEBUG=server:* npm start
+$ npm start
+```
+
+## build documentation
+
+```bash
+$ npm run docs
+```
+
+## clean documentation
+```bash
+$ npm run clean-docs
 ```
