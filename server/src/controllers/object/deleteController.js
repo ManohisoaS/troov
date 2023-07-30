@@ -4,9 +4,10 @@ const Object = require("../../database/models/Object");
  * Delete an object with the specified ID.
  * @async
  * @function
- * @param {Object} req - The HTTP request object.
- * @param {Object} res - The HTTP response object.
- * @returns {Promise<void>}  -  Returns a JSON response with the deleted object.
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ * @param {string} req.params.id - ID of object to delete
+ * @returns {object}  -  Returns a JSON response with the deleted object
  */
 async function deleteObject(req, res) {
   const objectId = req.params.id;

@@ -5,9 +5,11 @@ const User = require("../../database/models/User");
  *
  * @async
  * @function
- * @param {object} req - The HTTP request object.
- * @param {object} res - The HTTP response object.
- * @returns {object} The HTTP response.
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ * @param {string} req.body.email - user email
+ * @param {string} req.body.password - user password
+ * @returns {object} Express response
  */
 const registerUser = async (req, res) => {
   try {

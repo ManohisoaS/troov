@@ -2,9 +2,9 @@
  * Not found request.
  * @async
  * @function
- * @param {Object} req - The HTTP request object.
- * @param {Object} res - The HTTP response object.
- * @returns {Object} - An objects with response header 404.
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ * @returns {object} - An objects with response header 404
  */
 function notFoundController(req, res) {
   res.status(404).json({

@@ -4,9 +4,9 @@ const Object = require("../../database/models/Object");
  * Retrieves a list of objects.
  * @async
  * @function
- * @param {Object} req - The HTTP request object.
- * @param {Object} res - The HTTP response object.
- * @returns {Promise<void>} - An array of objects.
+ * @param {object} req - Express request object.
+ * @param {object} res - Express response object.
+ * @returns {object} - Returns a JSON response with an array of objects.
  */
 async function getObjects(req, res) {
   try {

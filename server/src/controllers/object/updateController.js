@@ -4,9 +4,12 @@ const Object = require("../../database/models/Object");
  * Updates an object with the specified ID.
  * @async
  * @function
- * @param {Object} req - The HTTP request object.
- * @param {Object} res - The HTTP response object.
- * @returns {Promise<void>}  -  Returns a JSON response with the updated object.
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ * @param {string} req.params.id - ID of object to update
+ * @param {string} [req.body.name] - New name of object
+ * @param {string} [req.body.description] - New description of new object
+ * @returns {object}  -  Returns a JSON response with the updated object
  */
 async function updateObject(req, res) {
   const objectId = req.params.id;

@@ -3,9 +3,11 @@ const Object = require("../../database/models/Object");
 /**
  * Creates a new object with the name and description provided in the request body
  * @async
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @returns {Promise<void>} - Returns a JSON response with the newly created object or a 400 error if creation failed
+ * @param {object} req - Express request object
+ * @param {object} res - Express response object
+ * @param {string} req.body.name - Name of new object
+ * @param {string} req.body.description - Descritpion of new object
+ * @returns {object} - Returns a JSON response with the newly created object or a 400 error if creation failed
  */
 async function createObject(req, res) {
   try {
