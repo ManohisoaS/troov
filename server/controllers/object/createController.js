@@ -10,6 +10,12 @@ const Object = require("../../database/models/Object");
 async function createObject(req, res) {
   try {
     const { name, description } = req.body;
+    if (!name || !description) {
+      return res
+        .status(400)
+        .json({ success: false, error: "Name and description are required" });
+    }
+
     const newObject = await Object.create({ name, description });
 
     res.status(201).json({ success: true, newObject });
