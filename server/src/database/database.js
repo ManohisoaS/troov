@@ -11,19 +11,6 @@ var mongoose = require("mongoose");
 async function connect(url, options = {}) {
   try {
     // Connects to the MongoDB database using Mongoose.
-    mongoose.connection.on("connecting", () => {
-      console.log("MongoDB: connecting...");
-    });
-    mongoose.connection.on("connected", () => {
-      console.log("MongoDB: connected.");
-    });
-    mongoose.connection.on("disconnecting", () => {
-      console.log("MongoDB: disconnecting...");
-    });
-    mongoose.connection.on("disconnected", () => {
-      console.log("MongoDB: disconnected.");
-    });
-
     return await mongoose.connect(url, options);
   } catch (error) {
     console.error("Error while trying to MongoDB database:", error);
