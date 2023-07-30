@@ -1,23 +1,22 @@
 {
   "source": {
-    "include": ["./src" ],
-    "exclude": [ "./node_modules", "./src/public"]
+    "include": ["./src", "README.md"],
+    "exclude": ["./node_modules"]
   },
+  "plugins": ["plugins/markdown"],
   "opts": {
     "recurse": true,
-    "destination": "./docs"
+    "destination": "./docs",
+    "encoding": "utf8",
+    "readme": "./README.md",
+    "verbose": true,
+    "template": "./node_modules/clean-jsdoc-theme",
+    "theme_opts": {
+      "default_theme": "dark"
+    }
   },
-  "plugins": [],
-  "templates": {
-    "cleverLinks": true,
-    "monospaceLinks": true,
-    "default": {
-      "outputSourceFiles": true
-    },
-    "path": "ink-docstrap",
-    "theme": "cerulean",
-    "navType": "vertical",
-    "linenums": true,
-    "dateFormat": "MMMM Do YYYY, h:mm:ss a"
+  "markdown": {
+    "hardwrap": false,
+    "idInHeadings": true
   }
 }
