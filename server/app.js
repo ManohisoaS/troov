@@ -4,7 +4,8 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const dotenv = require("dotenv");
 dotenv.config({ path: path.join(__dirname, "config", ".env") });
-var usersRouter = require("./routes/user");
+var userRouter = require("./routes/user");
+var objectRouter = require("./routes/object");
 
 var app = express();
 
@@ -14,6 +15,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/user", usersRouter);
+app.use("/user", userRouter);
+app.use("/", objectRouter);
 
 module.exports = app;
