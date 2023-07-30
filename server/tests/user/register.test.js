@@ -3,9 +3,9 @@ const chai = require("chai");
 const request = require("supertest");
 const { describe, it, before, after } = require("mocha");
 
-const User = require("../../database/models/User");
-const app = require("../../app");
-const connect = require("../../database/database");
+const User = require("../../src/database/models/User");
+const app = require("../../src/app");
+const connect = require("../../src/database/database");
 
 const expect = chai.expect;
 

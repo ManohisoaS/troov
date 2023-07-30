@@ -4,10 +4,10 @@ const request = require("supertest");
 const jwt = require("jsonwebtoken");
 const { describe, it, before, after } = require("mocha");
 
-const User = require("../../database/models/User");
-const Object = require("../../database/models/Object");
-const app = require("../../app");
-const connect = require("../../database/database");
+const User = require("../../src/database/models/User");
+const Object = require("../../src/database/models/Object");
+const app = require("../../src/app");
+const connect = require("../../src/database/database");
 
 const expect = chai.expect;
 

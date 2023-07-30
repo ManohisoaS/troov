@@ -1,7 +1,7 @@
 {
   "source": {
-    "include": ["." ],
-    "exclude": ["./config", "./node_modules", "./public"]
+    "include": ["./src" ],
+    "exclude": [ "./node_modules", "./src/public"]
   },
   "opts": {
     "recurse": true,
