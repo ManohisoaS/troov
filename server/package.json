@@ -6,7 +6,7 @@
     "start": "node ./src/bin/www",
     "docs": "jsdoc -c ./jsdoc.conf.json --verbose",
     "clean-docs": "rm -rf ./docs",
-    "test": "mocha tests/**/*.js"
+    "test": "mocha tests/**/*.js tests/**.js"
   },
   "dependencies": {
     "bcrypt": "^5.1.0",
