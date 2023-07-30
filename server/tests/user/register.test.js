@@ -1,11 +1,13 @@
 const mongoose = require("mongoose");
-const User = require("../database/models/User");
 const chai = require("chai");
 const request = require("supertest");
 const { describe, it, before, after } = require("mocha");
-const connect = require("../database/database");
+
+const User = require("../../database/models/User");
+const app = require("../../app");
+const connect = require("../../database/database");
+
 const expect = chai.expect;
-const app = require("../app");
 
 describe("POST /user/register", () => {
   let server;
