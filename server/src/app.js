@@ -6,6 +6,7 @@ const dotenv = require("dotenv");
 dotenv.config({ path: path.join(__dirname,"..", ".env") });
 var userRouter = require("./routes/user");
 var objectRouter = require("./routes/object");
+var notFoundController = require("./controllers/notFound");
 
 var app = express();
 
@@ -16,5 +17,6 @@ app.use(cookieParser());
 
 app.use("/user", userRouter);
 app.use("/", objectRouter);
+app.use(notFoundController);
 
 module.exports = app;
