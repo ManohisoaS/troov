@@ -71,6 +71,7 @@ describe("POST /user/register", () => {
       "test@gmail",
     ];
     emailList.forEach(async (email) => {
+      console.log(`test for ${email}`);
       const res = await request(app)
         .post("/user/register")
         .send({ email, password: "password123" });
