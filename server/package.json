@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "docs": "jsdoc -c ./config/jsdoc.conf.json --verbose",
+    "docs": "jsdoc -c ./jsdoc.conf.json --verbose",
     "clean-docs": "rm -rf ./docs",
     "test": "mocha tests/**/*.js"
   },

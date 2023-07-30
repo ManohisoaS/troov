@@ -1,6 +1,6 @@
 ## To Configure the Environment
 
-The .env file must be located in the config/ directory, and you must add the following keys to run the app correctly:
+The .env file must be located in the principal directory, and you must add the following keys to run the app correctly:
 
 -    PORT (optional): The port used by Express to listen for requests. If not specified, the default port is 3000.
 

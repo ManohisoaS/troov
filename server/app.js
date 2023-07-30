@@ -3,7 +3,7 @@ var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const dotenv = require("dotenv");
-dotenv.config({ path: path.join(__dirname, "config", ".env") });
+dotenv.config({ path: path.join(__dirname, ".env") });
 var userRouter = require("./routes/user");
 var objectRouter = require("./routes/object");
 
