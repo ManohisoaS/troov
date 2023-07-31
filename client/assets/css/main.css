@@ -1,0 +1,11 @@
+:root {
+  --primary: #3577da;
+}
+
+h1 {
+  font-size: 1.25rem;
+}
+.normal-text {
+  font-size: 0.875rem;
+}
+
