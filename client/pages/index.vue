@@ -1,11 +1,11 @@
 <template>
   <!-- Object list -->
-  <div class="container-fluid">
+  <div class="container-fluid mt-5">
     <div class="row text-center mb-4">
       <div class="mx-auto">
         <h1 class="font-weight-bold">Object manager</h1>
       </div>
-      
+
     </div>
     <div class="row">
       <div class="col-12 py-3">
@@ -15,9 +15,9 @@
             <span class="ms-3">New object</span>
           </router-link>
           <button type="button" class="btn btn-danger float-right">
-                  <b-icon icon="box-arrow-right"></b-icon>
-                  Logout
-            </button>
+            <b-icon icon="box-arrow-right"></b-icon>
+            Logout
+          </button>
 
           <div v-for="object in objects" :key="object._id" class="card mt-1">
             <h5 class="card-header">{{ object.name }}</h5>

@@ -1,7 +1,7 @@
 <template>
-  <div class="text-center mx-md-5">
+  <div class="text-center mx-md-5 col-5">
     <h1 class="font-weight-bold">Login</h1>
-    <p class="normal-text text-secondary">Welcome to the object manager app</p>
+    <p class="normal-text text-secondary mb-5">Welcome to the object manager app</p>
 
     <div v-if="errorMessage" class="alert alert-danger mt-3 text-start" role="alert">
       {{ errorMessage }}
@@ -9,7 +9,7 @@
 
     <form @submit.prevent="handleSubmit" class="mt-3">
       <div class="form-group">
-        <input type="email" class="form-control" id="emailInput" placeholder="Email adress" required v-model="email" />
+        <input type="email" class="form-control" id="emailInput" placeholder="Email address" required v-model="email" />
       </div>
 
       <div class="form-group">
