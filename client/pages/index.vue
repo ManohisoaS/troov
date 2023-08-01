@@ -4,8 +4,17 @@
     <div class="row text-center mb-4">
       <div class="mx-auto">
         <h1 class="font-weight-bold">Object manager</h1>
+
       </div>
 
+    </div>
+    <div class="row mx-auto">
+      <div v-if="errorMessage" class="alert alert-danger d-flex align-items-center" role="alert">
+        {{ errorMessage }}
+      </div>
+      <div v-if="successMessage" class="alert alert-success d-flex align-items-center" role="alert">
+        {{ successMessage }}
+      </div>
     </div>
     <div class="row">
       <div class="col-12 py-3">
@@ -30,7 +39,7 @@
                   Edit
                 </router-link>
 
-                <button type="button" class="btn btn-outline-danger">
+                <button type="button" class="btn btn-outline-danger" @click="handleDelete(object._id)">
                   <b-icon icon="trash"></b-icon>
                   Delete
                 </button>
@@ -48,7 +57,8 @@ export default {
   data() {
     return {
       objects: [],
-      errorMessage: null
+      errorMessage: this.$route.query.error || null,
+      successMessage: this.$route.query.info || null
     };
   },
   middleware: 'auth',
@@ -77,6 +87,31 @@ export default {
           localStorage.setItem("access_token", null);
           // Navigate to home screen
           this.$router.push({ path: "/login", query: { error: data.error } });
+        }
+      } catch (error) {
+        // Display error message in case of error
+        this.errorMessage = "Something went wrong.";
+      }
+    },
+    async handleDelete(id) {
+      // Get all available objects
+      try {
+        const token = localStorage.getItem('access_token');
+        const response = await fetch(`${this.$config.baseURL}/object/${id}`, {
+          method: "DELETE",
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+
+        const data = await response.json();
+        if (data.success) {
+          this.successMessage = `${data.deletedObject.name} has been deleted`;
+          // refresh object list
+          this.getObjects();
+        }
+        else {
+          this.errorMessage = data.error;
         }
       } catch (error) {
         // Display error message in case of error
