@@ -9,7 +9,8 @@ const deletedObject = require("../controllers/object/deleteController");
 
 // create new object
 router.post("/object", authenticateToken, createController);
-router.get("/objects", authenticateToken, getController);
+router.get("/objects", authenticateToken, getController.getObjects);
+router.get("/object/:id", authenticateToken, getController.getObject);
 router.put("/object/:id", authenticateToken, updateController);
 router.delete("/object/:id", authenticateToken, deletedObject);
 
