@@ -29,4 +29,7 @@ export default {
     baseURL: process.env.BASE_URL || "http://localhost:5000"
   },
   css: ["~/assets/css/main.css"],
+  bootstrapVue: {
+    icons: true
+  },
 };
