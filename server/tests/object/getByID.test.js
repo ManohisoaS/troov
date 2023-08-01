@@ -11,7 +11,7 @@ const connect = require("../../src/database/database");
 
 const expect = chai.expect;
 
-describe("PUT /object/:id", () => {
+describe("GET /object/:id", () => {
   let server;
   let userEmail = "test@example.com";
   let userPassword = "password123";
@@ -35,7 +35,7 @@ describe("PUT /object/:id", () => {
     await mongoose.connection.close();
   });
 
-  it("should return an updated object", async () => {
+  it("should return an object", async () => {
     // Log user to get token
     let res = await request(app)
       .post("/user/login")
@@ -50,48 +50,25 @@ describe("PUT /object/:id", () => {
       .expect(201);
     objectId = res.body.newObject._id;
 
-    // update object field
+    // get object by id
     res = await request(app)
-      .put(`/object/${objectId}`)
+      .get(`/object/${objectId}`)
       .set("Authorization", `Bearer ${token}`)
-      .send({ name: "new name", description: "new description" })
+      .send()
       .expect(200);
     expect(res.body.success).to.be.true;
-    expect(res.body.updatedObject).to.be.exist;
-    expect(res.body.updatedObject.name).to.equal("new name");
-    expect(res.body.updatedObject.description).to.equal("new description");
+    expect(res.body.object).to.be.exist;
+    expect(res.body.object.name).to.equal("object name");
+    expect(res.body.object.description).to.equal("detail of object");
   });
 
-  it("should return an updated object[only update name]", async () => {
-    let res = await request(app)
-      .put(`/object/${objectId}`)
-      .set("Authorization", `Bearer ${token}`)
-      .send({ name: "other name" })
-      .expect(200);
-    expect(res.body.success).to.be.true;
-    expect(res.body.updatedObject).to.be.exist;
-    expect(res.body.updatedObject.name).to.equal("other name");
-    expect(res.body.updatedObject.description).to.equal("new description");
-  });
-
-  it("should return an updated object[only update description]", async () => {
-    let res = await request(app)
-      .put(`/object/${objectId}`)
-      .set("Authorization", `Bearer ${token}`)
-      .send({ description: "other description" })
-      .expect(200);
-    expect(res.body.success).to.be.true;
-    expect(res.body.updatedObject).to.be.exist;
-    expect(res.body.updatedObject.name).to.equal("other name");
-    expect(res.body.updatedObject.description).to.equal("other description");
-  });
 
   it("should return an error if object ID is not in database", async () => {
     let objectIdNotfound = "64c66daf06df08870713fdd8";
     let res = await request(app)
-      .put(`/object/${objectIdNotfound}`)
+      .get(`/object/${objectIdNotfound}`)
       .set("Authorization", `Bearer ${token}`)
-      .send({ description: "other description" })
+      .send()
       .expect(400);
     expect(res.body.success).to.be.false;
     expect(res.body.error).to.equal("Object is not found");
@@ -100,9 +77,9 @@ describe("PUT /object/:id", () => {
   it("should return an error if object ID is invalid", async () => {
     let objectIdInvalid = "invalid";
     let res = await request(app)
-      .put(`/object/${objectIdInvalid}`)
+      .get(`/object/${objectIdInvalid}`)
       .set("Authorization", `Bearer ${token}`)
-      .send({ description: "other description" })
+      .send()
       .expect(400);
     expect(res.body.success).to.be.false;
     expect(res.body.error).to.equal("Object ID invalid");
@@ -110,7 +87,7 @@ describe("PUT /object/:id", () => {
 
   it("should return an error if the token is missing", async () => {
     let res = await request(app)
-      .put(`/object/${objectId}`)
+      .get(`/object/${objectId}`)
       .send({ name: "new name", description: "new description" })
       .expect(401);
     expect(res.body.success).to.be.false;
@@ -120,7 +97,7 @@ describe("PUT /object/:id", () => {
   it("should return an error if the token is invalid", async () => {
     let token = "invalid_token";
     let res = await request(app)
-      .put(`/object/${objectId}`)
+      .get(`/object/${objectId}`)
       .set("Authorization", `Bearer ${token}`)
       .send({ name: "new name", description: "new description" })
       .expect(401);
@@ -134,7 +111,7 @@ describe("PUT /object/:id", () => {
       expiresIn: "1ms",
     });
     let res = await request(app)
-      .put(`/object/${objectId}`)
+      .get(`/object/${objectId}`)
       .set("Authorization", `Bearer ${token}`)
       .send({ name: "new name", description: "new description" })
       .expect(401);

@@ -72,6 +72,18 @@ describe("DELETE /object/:id", () => {
     expect(res.body.error).to.equal("Object is not found");
   });
 
+  it("should return an error if object ID is invalid", async () => {
+    let objectIdInvalid = "invalid";
+    let res = await request(app)
+      .delete(`/object/${objectIdInvalid}`)
+      .set("Authorization", `Bearer ${token}`)
+      .send()
+      .expect(400);
+    expect(res.body.success).to.be.false;
+    expect(res.body.error).to.equal("Object ID invalid");
+  });
+
+
   it("should return an error if the token is missing", async () => {
     let res = await request(app)
       .delete(`/object/${objectId}`)
