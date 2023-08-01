@@ -23,7 +23,7 @@
             <b-icon icon="plus-circle"></b-icon>
             <span class="ms-3">New object</span>
           </router-link>
-          <button type="button" class="btn btn-danger float-right">
+          <button type="button" class="btn btn-danger float-right" @click="handleLogout()">
             <b-icon icon="box-arrow-right"></b-icon>
             Logout
           </button>
@@ -117,6 +117,12 @@ export default {
         // Display error message in case of error
         this.errorMessage = "Something went wrong.";
       }
+    },
+    async handleLogout() {
+      // remove token
+      localStorage.setItem("access_token", null);
+      // Navigate to home screen
+      this.$router.push("/login");
     }
   },
 };
