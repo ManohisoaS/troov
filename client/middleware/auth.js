@@ -6,7 +6,7 @@
  */
 export default function ({ app, store, route, redirect, ...context }) {
     const token = localStorage.getItem('access_token'); 
-    if (!token) {
+    if (token === "") {
         return redirect('/login');
     }
 }

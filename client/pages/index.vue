@@ -79,7 +79,6 @@ export default {
 
         const data = await response.json();
         if (data.success) {
-          console.log(data);
           this.objects = data.list;
         }
         else {
@@ -120,7 +119,7 @@ export default {
     },
     async handleLogout() {
       // remove token
-      localStorage.setItem("access_token", null);
+      localStorage.setItem("access_token", "");
       // Navigate to home screen
       this.$router.push("/login");
     }

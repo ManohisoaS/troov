@@ -53,7 +53,7 @@ export default {
   created() {
     // verify if alreay login
     const token = localStorage.getItem('access_token');
-    if(token){
+    if(token != ""){
       // Navigate to home screen
       this.$router.push("/");
     }

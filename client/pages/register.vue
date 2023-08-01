@@ -50,14 +50,14 @@ export default {
       errorMessage: null,
     }
   },
-  // created() {
-  //   // verify if alreay login
-  //   const token = localStorage.getItem('access_token');
-  //   if(token){
-  //     // Navigate to home screen
-  //     this.$router.push("/");
-  //   }
-  // },
+  created() {
+    // verify if alreay login
+    const token = localStorage.getItem('access_token');
+    if(token != ""){
+      // Navigate to home screen
+      this.$router.push("/");
+    }
+  },
   methods: {
     async handleSubmit() {
       try {
@@ -82,9 +82,6 @@ export default {
         const data = await response.json();
 
         if (data.success) {
-          // Store access token
-          // localStorage.setItem("access_token", data.token);
-
           // Navigate to home screen
           this.$router.push("/login");
         }
