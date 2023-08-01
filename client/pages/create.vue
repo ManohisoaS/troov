@@ -1,12 +1,14 @@
 <template>
-    <div class="col-6 mt-5">
+    <div class="mt-5 col-10 col-sm-8">
 
         <h1 class="text-center font-weight-bold">New object</h1>
-        <div v-if="errorMessage" class="alert alert-danger mt-3 text-start" role="alert">
-            {{ errorMessage }}
+        <div v-if="errorMessage" class="alert alert-danger d-flex align-items-center col-12" role="alert">
+            <b-icon icon="exclamation-triangle-fill" class="mr-2"></b-icon>
+            <div>{{ errorMessage }}</div>
         </div>
-        <div v-if="successMessage" class="alert alert-success mt-3 text-start" role="alert">
-            {{ successMessage }}
+        <div v-if="successMessage" class="alert alert-success d-flex align-items-center col-12" role="alert">
+            <b-icon icon="check-circle-fill" class="mr-2"></b-icon>
+            <div>{{ successMessage }}</div>
         </div>
 
         <form @submit.prevent="handleSubmit" class="mt-4">
@@ -74,7 +76,7 @@ export default {
                 const data = await response.json();
 
                 if (data.success) {
-                    this.successMessage = `"${data.newObject.name}" object created`;
+                    this.successMessage = `<${data.newObject.name}> object is created`;
                     // reset inputs
                     this.name = null;
                     this.description = null;

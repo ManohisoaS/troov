@@ -1,19 +1,20 @@
 <template>
   <!-- Object list -->
-  <div class="container-fluid mt-5">
+  <div class="container-fluid mt-5 col-12 col-sm-10 col-md-8 col-xl-6">
     <div class="row text-center mb-4">
       <div class="mx-auto">
         <h1 class="font-weight-bold">Object manager</h1>
-
       </div>
 
     </div>
     <div class="row mx-auto">
-      <div v-if="errorMessage" class="alert alert-danger d-flex align-items-center" role="alert">
-        {{ errorMessage }}
+      <div v-if="errorMessage" class="alert alert-danger d-flex align-items-center col-12" role="alert">
+        <b-icon icon="exclamation-triangle-fill" class="mr-2"></b-icon>
+        <div>{{ errorMessage }}</div>
       </div>
-      <div v-if="successMessage" class="alert alert-success d-flex align-items-center" role="alert">
-        {{ successMessage }}
+      <div v-if="successMessage" class="alert alert-success d-flex align-items-center col-12" role="alert">
+        <b-icon icon="check-circle-fill" class="mr-2"></b-icon>
+      <div>{{ successMessage }}</div>
       </div>
     </div>
     <div class="row">
@@ -34,7 +35,7 @@
               <p class="card-text">{{ object.description }}</p>
 
               <div class="d-grid gap-2 d-md-block">
-                <router-link :to="`/edit/${object._id}`" type="button" class="btn btn-outline-info">
+                <router-link :to="`/edit/${object._id}`" type="button" class="btn btn-outline-primary">
                   <b-icon icon="pencil"></b-icon>
                   Edit
                 </router-link>
@@ -105,7 +106,7 @@ export default {
 
         const data = await response.json();
         if (data.success) {
-          this.successMessage = `${data.deletedObject.name} has been deleted`;
+          this.successMessage = `<${data.deletedObject.name}> has been deleted`;
           // refresh object list
           this.getObjects();
         }

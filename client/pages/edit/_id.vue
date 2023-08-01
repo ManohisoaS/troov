@@ -1,5 +1,5 @@
 <template>
-    <div class="col-6 mt-5">
+    <div class="mt-5 col-10 col-sm-8">
 
         <h1 class="text-center font-weight-bold">Edit object</h1>
         <div v-if="errorMessage" class="alert alert-danger mt-3 text-start" role="alert">
@@ -21,9 +21,9 @@
                     v-model="description"></textarea>
             </div>
 
-            <div class="d-grid ">
-                <router-link to="/" class="btn btn-secondary">Cancel</router-link>
-                <button type="submit" class="btn btn-primary">
+            <div class="d-flex justify-content-center text-center mt-4">
+                <router-link to="/" class="btn btn-secondary col-5 mr-2">Cancel</router-link>
+                <button type="submit" class="btn btn-primary col-5">
                     <div v-if="submitting" class="spinner-border text-light" role="status"
                         :style="{ width: '1rem', height: '1rem' }">
                         <span class="visually-hidden sr-only">Loading...</span>
@@ -104,7 +104,7 @@ export default {
                 const data = await response.json();
 
                 if (data.success) {
-                    this.successMessage = `"${data.updatedObject.name}" object updated`;
+                    this.successMessage = `<${data.updatedObject.name}> object is updated`;
                     // update inputs
                     this.name = data.updatedObject.name;
                     this.description = data.updatedObject.name;
